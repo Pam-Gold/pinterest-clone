@@ -9,6 +9,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Layout from "./layout/Layout";
+import ImageDetails from "./components/media-props/ImageDatails";
 // import Home from "./pages/Home";
 // import Search from "./pages/Search";
 //
@@ -32,6 +33,7 @@ function App() {
         </React.Suspense>
         
         }/>
+        <Route path="/:id" element={<ImageDetails/>} />
         <Route path="/search" element={
           <React.Suspense>
             <Search/>
