@@ -14,6 +14,7 @@ import {
 } from "react-share";
 import useToggle from "../../hooks/useToggle";
 
+import { useToast } from "@chakra-ui/react";
 
 const ImageDetails = () => {
   const { id } = useParams();
@@ -48,6 +49,8 @@ const ImageDetails = () => {
 
   const [shareBox, renderShareBox] = useToggle()
   const [downloadBox, renderDownloadBox] = useToggle()
+
+  const toast = useToast()
 
   return (
     <Flex
@@ -126,7 +129,14 @@ const ImageDetails = () => {
             <i style={{cursor:"pointer"}} className="fa-solid fa-arrow-up-from-bracket" onClick={renderShareBox}></i>
           </Flex>
           <Flex h="40px" w="40px" justify="content" align="center">
-            <i style={{cursor:"pointer"}} className="fa-solid fa-link" onClick={()=>navigator.clipboard.writeText(detailData?.urls?.regular)} ></i>
+            <i style={{cursor:"pointer"}} className="fa-solid fa-link" onClick={()=>{
+              
+              toast({  title: "Link Copied",
+              status: "success",
+              duration: 1000,
+              position:"top"})
+              
+              navigator.clipboard.writeText(detailData?.urls?.regular)}} ></i>
           </Flex>
         </Flex>
         <Flex>
@@ -170,7 +180,7 @@ const ImageDetails = () => {
           <TwitterShareButton onClick={renderShareBox}   url={detailData?.urls?.regular}>
             <XIcon size={40} round={true}/>
           </TwitterShareButton>
-          
+          .
         </Flex>}
 
         { downloadBox && <Flex top="70px" left="5px" pos="absolute" h="fit-content" w="fit-content" bg="#fff" p="10px 25px" borderRadius="8px">

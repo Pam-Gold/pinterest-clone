@@ -11,6 +11,7 @@ import {
 import { Link } from "react-router-dom";
 import logo from "../assets/images/PG (3).png";
 import useToggle from "../hooks/useToggle";
+import Auth from "./Auth";
 const Navbar = () => {
   const navbarMobileButtonStyles = {
     fontSize: "1.6rem",
@@ -180,6 +181,7 @@ const Navbar = () => {
         top="0px"
         bg="#fff"
       ></Box>
+      {false&&<Auth/>}
     </>
   );
 };
