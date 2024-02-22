@@ -63,6 +63,7 @@ const Home = () => {
           lg: "235px 235px 235px 235px ",
           xl: "235px 235px 235px 235px 235px",
         }}
+      
         gridTemplateRows="min-content"
         gap={{ base: "18px", sm: "20px", md: "20px", lg: "25px", xl: "25px" }}
         placeContent="center"
