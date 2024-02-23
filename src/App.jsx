@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import Layout from "./layout/Layout";
 import ImageDetails from "./components/media-props/ImageDatails";
+import SearchDetails from "./components/media-props/SearchDetails";
 // import Home from "./pages/Home";
 // import Search from "./pages/Search";
 //
@@ -19,6 +20,8 @@ const  Home = React.lazy(()=>import('./pages/Home'))
 const Notification = React.lazy(()=>import('./pages/Notification'))
 
 const Search = React.lazy(()=>import('./pages/Search'))
+
+
 
 function App() {
   
@@ -40,6 +43,7 @@ function App() {
           </React.Suspense>
         } />
 
+<Route path="/search/:id" element={<SearchDetails/>}/>
         <Route  path="/notification" element={
           <React.Suspense>
             <Notification/>
