@@ -50,7 +50,35 @@ const ImageDetails = () => {
   const [shareBox, renderShareBox] = useToggle()
   const [downloadBox, renderDownloadBox] = useToggle()
 
-  const toast = useToast()
+  const toast = useToast() 
+
+  const downloadImage = (imageUrl, imageName) => {
+    fetch(imageUrl)
+      .then(response => response.blob())
+      .then(blob => {
+        // Create a URL for the blob
+        const url = URL.createObjectURL(blob);
+
+        
+
+        // Create a temporary link element
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = imageName; // Set desired file name
+        document.body.appendChild(link);
+        
+        // Trigger download
+        link.click();
+
+        // Cleanup
+        URL.revokeObjectURL(url);
+        document.body.removeChild(link);
+      })
+      .catch(error => {
+        console.error('Error downloading image:', error);
+      });
+      renderDownloadBox()
+  };
 
   return (
     <Flex
@@ -184,7 +212,7 @@ const ImageDetails = () => {
         </Flex>}
 
         { downloadBox && <Flex top="70px" left="5px" pos="absolute" h="fit-content" w="fit-content" bg="#fff" p="10px 25px" borderRadius="8px">
-          <Text cursor="pointer" onClick={renderDownloadBox}>Download</Text>
+          <Text cursor="pointer" onClick={downloadImage(detailData?.urls?.regular, detailData?.alt_description)}> Download</Text>
         </Flex>}
       </Flex>
     </Flex>
