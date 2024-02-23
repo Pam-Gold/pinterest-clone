@@ -139,6 +139,7 @@ const Navbar = () => {
         columnGap="25px"
         bg="#fff"
         alignItems="center"
+        zIndex="100"
       >
         <Button sx={navbarMobileButtonStyles}>
           <Link to="/">

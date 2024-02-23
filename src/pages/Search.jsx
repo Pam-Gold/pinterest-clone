@@ -62,20 +62,20 @@ const Search = () => {
           onKeyDown={renderSearchResults}
         />
       </Box>
-      <Grid
-        gridTemplateColumns={{
-          base: "150px 150px",
-          sm: "180px 180px ",
-          md: "230px 230px 230px ",
-          lg: "235px 235px 235px 235px ",
-          xl: "235px 235px 235px 235px 235px",
-        }}
-        gridTemplateRows="min-content"
+      <Flex flexWrap="wrap"
+        // gridTemplateColumns={{
+        //   base: "150px 150px",
+        //   sm: "180px 180px ",
+        //   md: "230px 230px 230px ",
+        //   lg: "235px 235px 235px 235px ",
+        //   xl: "235px 235px 235px 235px 235px",
+        // }}
+        // gridTemplateRows="min-content"
         gap={{ base: "10px", sm: "20px", md: "20px", lg: "25px", xl: "25px" }}
-        placeContent="center"
+        // placeContent="center"
       >
         {searchData[0] && searchData.map((img) => <ImageTile {...img} />)}
-      </Grid>
+      </Flex>
     </Flex>
   );
 };
