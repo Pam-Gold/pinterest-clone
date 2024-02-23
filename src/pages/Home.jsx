@@ -18,7 +18,7 @@ const Home = () => {
   const fetchData = async () => {
     try {
       const res = await fetch(
-        `https://api.unsplash.com/photos?page=${page}&per_page=25&client_id=${apiKey}`
+        `https://api.unsplash.com/photos?page=${page}&per_page=24&client_id=${apiKey}`
       );
 
       const data = await res.json();
@@ -55,23 +55,23 @@ const Home = () => {
     >
 
       <Navbar/>
-      <Grid
-        gridTemplateColumns={{
-          base: "145px 145px",
-          sm: "180px 180px ",
-          md: "230px 230px 230px ",
-          lg: "235px 235px 235px 235px ",
-          xl: "235px 235px 235px 235px 235px",
-        }}
+      <Flex flexWrap="wrap"
+        // gridTemplateColumns={{
+        //   base: "145px 145px",
+        //   sm: "180px 180px ",
+        //   md: "230px 230px 230px ",
+        //   lg: "235px 235px 235px 235px ",
+        //   xl: "235px 235px 235px 235px 235px",
+        // }}
       
-        gridTemplateRows="min-content"
+        // gridTemplateRows="min-content"
         gap={{ base: "18px", sm: "20px", md: "20px", lg: "25px", xl: "25px" }}
         placeContent="center"
       >
         {data.map((img) => (
           <ImageTile {...img} />
         ))}
-      </Grid>
+      </Flex>
       <Flex align="center" columnGap="15px" justify="center">
         <Button onClick={()=>setPage(1)}>1</Button>
         <Button onClick={()=>setPage(2)}>2</Button>

@@ -8,7 +8,7 @@ const ImageTile = (props) => {
 <Flex h="fit-content" w="fit-content"  >
   <Link to={props.id.toString()}>
   
-  <Img src={props.urls.regular}  h={{base:`${props.height / 15}`, sm:`${props.height / 20}`, md:`${props.height / 15}`, lg:"350px", xl:"350px" }} w={{base:"200px", sm:"200px", md:"200px", lg:"100%", xl:"100%"}} borderRadius="20px"  bg={props.color}/>
+  <Img src={props.urls.regular}  h={{base:`${props.height / 15}`, sm:`${props.height / 20}`, md:`${props.height / 15}`, lg:"350px", xl:"350px" }} w={{base:"140px", sm:"220px", md:"200px", lg:"235px", xl:"235px"}} borderRadius="20px"  bg={props.color}/>
   </Link>
 </Flex>
   )
