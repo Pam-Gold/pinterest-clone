@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Button, Flex, Grid, Img, Text } from "@chakra-ui/react";
+import { Button, Box, Flex, Grid, Img, Text } from "@chakra-ui/react";
 import {
   EmailShareButton,
   WhatsappShareButton,
@@ -77,8 +77,30 @@ const ImageDetails = () => {
       .catch(error => {
         console.error('Error downloading image:', error);
       });
-      renderDownloadBox()
+    
+
+  
   };
+
+  const initiateDownload = () => {
+
+    toast({title: "Image Downloaded",
+      colorScheme:'#fff',
+      duration: 1000,
+      render:()=>(
+        <Box bg="#fff" color="#000" p="15px 5px" textAlign="center" fontWeight="bold" borderRadius="5px">
+Downloaded Image
+        </Box>
+      ),
+      position:"top"})
+
+      renderDownloadBox()
+
+    setTimeout(()=>{
+      downloadImage(detailData?.urls?.regular, detailData?.alt_description)
+    },2000)
+
+  }
 
   return (
     <Flex
@@ -212,7 +234,7 @@ const ImageDetails = () => {
         </Flex>}
 
         { downloadBox && <Flex top="70px" left="5px" pos="absolute" h="fit-content" w="fit-content" bg="#fff" p="10px 25px" borderRadius="8px">
-          <Text cursor="pointer" onClick={downloadImage(detailData?.urls?.regular, detailData?.alt_description)}> Download</Text>
+          <Text cursor="pointer"onClick={initiateDownload} > Download</Text>
         </Flex>}
       </Flex>
     </Flex>
